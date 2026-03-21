@@ -21,9 +21,9 @@ function App() {
       <Navbar dark={dark} toggleDark={() => setDark(d => !d)} />
       <Hero />
       <About />
-      <Experience />
       <Projects />
       <Skills />
+      <Experience />
       <Awards />
       <Contact />
       <Footer />

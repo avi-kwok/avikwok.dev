@@ -49,8 +49,7 @@ export default function Hero() {
         </div>
 
         <p className="text-base sm:text-lg text-slate-600 dark:text-slate-400 max-w-2xl mx-auto leading-relaxed mb-8">
-          UBC Sauder student who builds software and thinks in systems.
-          Targeting tech internships in software engineering, product, quant, and sales engineering.
+          UBC Sauder second year student targeting tech internships in software engineering, product, or anything else tech related ‼️
         </p>
 
         <div className="flex flex-wrap justify-center gap-3 mb-12">

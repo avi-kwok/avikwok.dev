@@ -49,9 +49,9 @@ export default function Projects() {
               className={`rounded-2xl bg-gradient-to-br ${p.gradient} border border-slate-200 dark:border-slate-700 flex flex-col hover:border-emerald-300 dark:hover:border-emerald-700 transition-colors overflow-hidden`}
             >
               {/* Preview image */}
-              <div className="w-full h-48 overflow-hidden">
+              <div className="w-full h-48 overflow-hidden bg-slate-900">
                 {p.preview
-                  ? <img src={p.preview} alt={p.title} className="w-full h-full object-cover" style={{ objectPosition: '0% 15%' }} />
+                  ? <img src={p.preview} alt={p.title} className="w-full h-full object-contain" />
                   : <div className={`w-full h-full bg-gradient-to-br ${p.previewBg} flex items-center justify-center`}>
                       <span className="text-slate-400 text-sm font-mono">{p.previewLabel}</span>
                     </div>
