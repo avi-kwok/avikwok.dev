@@ -14,7 +14,7 @@ const projects = [
     tags: ['Python', 'FastAPI', 'LangChain', 'ChromaDB', 'Ollama', 'Next.js', 'React', 'Docker'],
     live: null,
     github: 'https://github.com/avi-kwok/mushu-AI',
-    gradient: 'from-green-500/10 to-purple-500/10 dark:from-green-900/20 dark:to-purple-900/20',
+    gradient: 'from-green-500/10 to-purple-500/10 dark:from-green-800/40 dark:to-purple-900/30',
     dot: 'bg-green-500',
   },
   {
@@ -30,7 +30,7 @@ const projects = [
     tags: ['JavaScript', 'Node.js', 'Express', 'EJS', 'MongoDB', 'REST API'],
     live: 'https://ultideploy.onrender.com',
     github: 'https://github.com/avi-kwok',
-    gradient: 'from-teal-500/10 to-emerald-500/10 dark:from-teal-900/20 dark:to-emerald-900/20',
+    gradient: 'from-teal-500/10 to-emerald-500/10 dark:from-teal-800/40 dark:to-emerald-800/30',
     dot: 'bg-teal-500',
   },
 ]

@@ -2,7 +2,7 @@ import { Mail, Linkedin, Github, ArrowUpRight } from 'lucide-react'
 
 export default function Contact() {
   return (
-    <section id="contact" className="py-20 px-6 bg-stone-50 dark:bg-slate-950">
+    <section id="contact" className="py-20 px-6 bg-stone-50 dark:bg-[#041705]">
       <div className="max-w-2xl mx-auto text-center">
         <p className="text-teal-500 dark:text-teal-400 text-sm font-medium mb-3 tracking-wide uppercase">Get in touch</p>
         <h2 className="text-3xl sm:text-4xl font-bold text-slate-900 dark:text-white mb-6">Let's Talk</h2>
