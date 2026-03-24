@@ -17,7 +17,7 @@ function App() {
   }, [dark])
 
   return (
-    <div className="min-h-screen bg-stone-50 dark:bg-[#041705] text-slate-900 dark:text-slate-100 transition-colors duration-300">
+    <div className="min-h-screen bg-stone-50 dark:bg-[#010301] text-slate-900 dark:text-slate-100 transition-colors duration-300">
       <Navbar dark={dark} toggleDark={() => setDark(d => !d)} />
       <Hero />
       <About />
