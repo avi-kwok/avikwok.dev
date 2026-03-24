@@ -13,7 +13,7 @@ export default function Navbar({ dark, toggleDark }) {
   ]
 
   return (
-    <nav className="fixed top-0 left-0 right-0 z-50 bg-stone-200/80 dark:bg-[#042b05]/80 backdrop-blur-md border-b border-slate-200 dark:border-slate-800 transition-colors duration-300">
+    <nav className="fixed top-0 left-0 right-0 z-50 bg-stone-200/80 dark:bg-[#030803]/80 backdrop-blur-md border-b border-slate-200 dark:border-slate-800 transition-colors duration-300">
       <div className="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
         <a href="#" className="text-lg font-bold text-slate-900 dark:text-white tracking-tight">
           AK<span className="text-green-500">.</span>
@@ -49,7 +49,7 @@ export default function Navbar({ dark, toggleDark }) {
       </div>
 
       {open && (
-        <div className="md:hidden border-t border-slate-200 dark:border-slate-800 bg-stone-200 dark:bg-[#042b05] px-6 py-4 flex flex-col gap-4">
+        <div className="md:hidden border-t border-slate-200 dark:border-slate-800 bg-stone-200 dark:bg-[#030803] px-6 py-4 flex flex-col gap-4">
           {links.map(l => (
             <a
               key={l.href}
