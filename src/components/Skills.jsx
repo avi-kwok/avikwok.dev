@@ -1,15 +1,15 @@
 const groups = [
   {
     label: 'Languages',
-    skills: ['Python', 'JavaScript', 'TypeScript', 'SQL', 'Java', 'C++', 'R'],
+    skills: ['Python', 'JavaScript', 'TypeScript', 'Java', 'C++', 'R'],
   },
   {
     label: 'Frameworks & Tools',
-    skills: ['React', 'Next.js', 'Node.js', 'Express', 'FastAPI', 'LangChain', 'MongoDB', 'ChromaDB', 'Git', 'Docker', 'Vercel', 'Railway', 'Google Workspace', 'Microsoft 365'],
+    skills: ['React', 'Next.js', 'Node.js', 'FastAPI', 'MongoDB', 'Git', 'Docker'],
   },
   {
     label: 'Business & Professional',
-    skills: ['Financial Analysis', 'Client Relations', 'Regulatory Compliance', 'Operations', 'Data Interpretation', 'Problem Solving', 'Communication'],
+    skills: ['Google Workspace', 'Microsoft 365', 'Client Relations', 'Regulatory Compliance', 'Problem Solving', 'Communication'],
   },
 ]
 
