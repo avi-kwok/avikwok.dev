@@ -32,31 +32,6 @@ export default function Awards() {
             </div>
           </div>
         </div>
-
-        <div className="grid sm:grid-cols-3 gap-4">
-          {[
-            {
-              title: 'Teamwork',
-              desc: 'Competed as part of a cohesive unit, learning to lead, follow, and adapt based on what the moment requires.',
-            },
-            {
-              title: 'Discipline',
-              desc: 'Years of training and competition have built a consistent work ethic that carries directly into academic and professional contexts.',
-            },
-            {
-              title: 'Performance Under Pressure',
-              desc: 'Competing at nationals means delivering when it counts - a mindset I bring to high-stakes professional environments.',
-            },
-          ].map(item => (
-            <div
-              key={item.title}
-              className="p-5 rounded-xl bg-stone-100 dark:bg-slate-800/50 border border-slate-200 dark:border-slate-700"
-            >
-              <h4 className="font-semibold text-slate-900 dark:text-white text-sm mb-2">{item.title}</h4>
-              <p className="text-xs text-slate-500 dark:text-slate-400 leading-relaxed">{item.desc}</p>
-            </div>
-          ))}
-        </div>
       </div>
     </section>
   )

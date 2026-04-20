@@ -1,6 +1,6 @@
 export default function About() {
   return (
-    <section id="about" className="py-20 px-6">
+    <section id="about" className="pt-20 pb-5 px-6">
       <div className="max-w-6xl mx-auto">
         <div className="grid md:grid-cols-2 gap-12 items-start">
           <div>
@@ -31,7 +31,7 @@ export default function About() {
 
         <div className="mt-16 grid grid-cols-2 md:grid-cols-4 gap-6">
           {[
-            { value: '2028', label: 'Expected Graduation Year' },
+            { value: '2029', label: 'Expected Graduation Year' },
             { value: 'Top 1%', label: 'In Rocket League and Valorant' },
             { value: 'Yoshi', label: 'Favourite Character' },
             { value: 'Green', label: 'Favourite Colour' },
