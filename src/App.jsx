@@ -7,6 +7,7 @@ import Projects from './components/Projects'
 import Skills from './components/Skills'
 import Experience from './components/Experience'
 import Contact from './components/Contact'
+import Special from './components/Special'
 import MusicWidget from './components/MusicWidget'
 
 const yoshis = [
@@ -17,10 +18,20 @@ const yoshis = [
   { id: 'special',    img: '/specialyoshi.png', label: '???'        },
 ]
 
+const THEMES = [
+  { id: 'main',     name: "Yoshi's Story - Main Theme",     src: '/bg-main.mp3'     },
+  { id: 'ending',   name: "Yoshi's Story - Ending Theme",   src: '/bg-ending.mp3'   },
+  { id: 'flower',   name: "Yoshi's Island - Flower Garden", src: '/bg-flower.mp3'   },
+  { id: 'athletic', name: "Yoshi's Island - Athletic",      src: '/bg-athletic.mp3' },
+]
+
 export default function App() {
   const [view, setView]           = useState('landing')
   const [fading, setFading]       = useState(false)
   const [selectKey, setSelectKey] = useState(0)
+  const [selectedTheme, setSelectedTheme] = useState(
+    () => THEMES[Math.floor(Math.random() * THEMES.length)]
+  )
 
   function goTo(target) {
     setFading(true)
@@ -59,14 +70,16 @@ export default function App() {
           {view === 'skills'     && <Skills />}
           {view === 'experience' && <Experience />}
           {view === 'special'    && (
-            <div className="flex items-center justify-center min-h-[60vh]">
-              <p className="text-3xl font-bold text-slate-400">Coming soon!</p>
-            </div>
+            <Special
+              themes={THEMES}
+              selectedTheme={selectedTheme}
+              setSelectedTheme={setSelectedTheme}
+            />
           )}
         </SectionPage>
       )}
 
-      <MusicWidget />
+      <MusicWidget theme={selectedTheme} />
     </div>
   )
 }
