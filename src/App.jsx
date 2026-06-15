@@ -6,7 +6,6 @@ import About from './components/About'
 import Projects from './components/Projects'
 import Skills from './components/Skills'
 import Experience from './components/Experience'
-import Contact from './components/Contact'
 import Special from './components/Special'
 import MusicWidget from './components/MusicWidget'
 
@@ -65,7 +64,7 @@ export default function App() {
 
       {isSection && currentYoshi && (
         <SectionPage yoshi={currentYoshi} onBack={() => goTo('select')}>
-          {view === 'about'      && <><About /><Contact /></>}
+          {view === 'about'      && <About />}
           {view === 'projects'   && <Projects />}
           {view === 'skills'     && <Skills />}
           {view === 'experience' && <Experience />}
@@ -79,7 +78,7 @@ export default function App() {
         </SectionPage>
       )}
 
-      <MusicWidget theme={selectedTheme} />
+      <MusicWidget themes={THEMES} theme={selectedTheme} setTheme={setSelectedTheme} />
     </div>
   )
 }
