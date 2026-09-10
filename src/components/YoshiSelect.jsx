@@ -29,14 +29,14 @@ export default function YoshiSelect({ yoshis, onSelect, onBack }) {
   }
 
   return (
-    <div className="min-h-screen bg-white overflow-x-hidden px-6 sm:px-8 py-12 sm:py-16 flex flex-col items-center justify-center gap-11 select-none">
+    <div className="min-h-screen bg-white overflow-x-hidden px-6 sm:px-8 py-12 sm:py-16 grid grid-rows-[1fr_auto_1fr] justify-items-center select-none">
       <audio ref={audioRef} preload="auto">
         <source src="/name.mp3" type="audio/mpeg" />
       </audio>
 
       {/* Header + widgets */}
       <div
-        className="flex flex-col items-center gap-11 opacity-0"
+        className="flex flex-col items-center gap-4 sm:gap-5 mb-8 sm:mb-10 opacity-0 self-end"
         style={{ animation: 'yoshiFadeIn 0.3s ease forwards' }}
       >
         <h1 className="text-3xl sm:text-4xl font-bold text-slate-900 text-center leading-snug">
@@ -66,7 +66,7 @@ export default function YoshiSelect({ yoshis, onSelect, onBack }) {
       </div>
 
       {/* Yoshis */}
-      <div className="grid grid-cols-2 gap-x-10 gap-y-10 place-items-center sm:flex sm:flex-row sm:items-end sm:gap-8 md:gap-10">
+      <div className="w-full grid grid-cols-2 gap-x-10 gap-y-10 place-items-center justify-center sm:flex sm:flex-row sm:items-end sm:justify-center sm:gap-8 md:gap-10">
         {yoshis.map((y, i) => (
           <div
             key={y.id}
@@ -86,6 +86,8 @@ export default function YoshiSelect({ yoshis, onSelect, onBack }) {
           </div>
         ))}
       </div>
+
+      <div aria-hidden="true" />
     </div>
   )
 }
