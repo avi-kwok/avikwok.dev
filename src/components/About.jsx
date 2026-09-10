@@ -46,16 +46,16 @@ export default function About() {
 
             <div className="space-y-3 text-slate-600 dark:text-slate-400 leading-relaxed">
               <p>
-                I'm a second-year student at UBC pursuing a combined major in Business and Computer Science, currently looking to expand my experience through tech internships and hands-on projects.
+                I'm a second-year student at UBC pursuing a combined major in Business and Computer Science, currently looking to expand my experience through techincal internships, projects, and hackathons.
               </p>
               <p>
-                My professional career so far has been shaped by my experience in working at TD as a customer experience associate. Outside of work, I build full-stack applications for anything that inspires me. <span className="font-medium text-slate-700 dark:text-slate-300">Mushu Kwok AI</span> is a full-stack RAG chatbot that brings my real-life dog to life. a Next.js front end and FastAPI backend that retrieves facts from a ChromaDB vector store and streams answers from a Groq-hosted LLM in real time. My <span className="font-medium text-slate-700 dark:text-slate-300">Ultimate Frisbee Coaching App</span> (my first project ever) is a Node, Express, and MongoDB platform that helps coaches manage rosters, plan lineups, and track player stats.
+                My professional career so far has been shaped by my experience in working at TD as a customer experience associate. Outside of work, I build full-stack applications for anything. One of my projects include emulating my real life dog as a RAG Chatbot. Currently, one of my project ideas (for the near or distant future) involves combining hardware and software to make an <b>automatic sheet music scroller</b>.
               </p>
               <p>
-                I'm drawn to work that sits at the crossroads of people and systems, including product thinking, fintech, strategy, and ops. If it involves understanding how things work and making them work better, I'm interested.
+                I'm drawn to work that sits at the crossroads of people and systems, including product design, strategy, and operations. My learning is centered around understanding how things work and making them work better.
               </p>
               <p>
-                Outside of class and work, I'm a (now retired) :( national Ultimate Frisbee player - which has redefined how I approach teamwork, pressure, and preparation. In my free time, I enjoy playing Rocket League competitively, cooking steak whenever I'm in the mood, playing a wide variety of sports, and attending occasional poker home games.
+                Outside of class and work, I'm a (now retired) :( national Ultimate Frisbee player - which has redefined how I approach teamwork, pressure, and preparation. In my free time, I enjoy playing <s>Rocket League</s> <b>Teamfight Tactics and speedrunning Minecraft</b> competitively, cooking steak whenever I'm in the mood, playing a wide variety of sports, and attending occasional poker home games.
               </p>
             </div>
           </div>
