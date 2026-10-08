@@ -22,14 +22,6 @@ export default function MusicWidget({ themes, theme, setTheme }) {
 
   const idx = themes.findIndex(t => t.id === theme.id)
 
-  // Attempt autoplay on mount
-  useEffect(() => {
-    startedRef.current = true
-    audioRef.current?.play()
-      .then(() => { setPlaying(true); setShowName(true) })
-      .catch(() => {})
-  }, [])
-
   // Switch track when theme changes
   useEffect(() => {
     if (!audioRef.current) return
@@ -67,8 +59,10 @@ export default function MusicWidget({ themes, theme, setTheme }) {
       audioRef.current?.pause()
       setPlaying(false)
     }
+    // Called from the Fat Yoshi click on Landing, so music starts on that gesture
     window.__musicPlay = () => {
-      if (!startedRef.current || !audioRef.current) return
+      if (!audioRef.current) return
+      startedRef.current = true
       audioRef.current.play()
         .then(() => { setPlaying(true); setShowName(true) })
         .catch(() => {})
