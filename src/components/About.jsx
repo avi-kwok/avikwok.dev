@@ -2,13 +2,13 @@ import { FileText, Linkedin, Github, ArrowUpRight } from 'lucide-react'
 
 const STATS = [
   { value: '2029', label: 'Expected Graduation Year' },
-  { value: 'Top 1%', label: 'In Rocket League and Valorant' },
-  { value: 'Yoshi', label: 'Favourite Character' },
+  { value: 'Top 0.4%', label: 'In Rocket League' },
+  { value: 'Romance', label: 'Best Anime Genre' },
   { value: 'Green', label: 'Favourite Colour' },
 ]
 
 export default function About() {
-  return (
+    return(
     <section id="about" className="py-10 px-6">
       <div className="max-w-6xl mx-auto">
         <div className="grid md:grid-cols-2 gap-8 items-stretch">
@@ -49,13 +49,13 @@ export default function About() {
                 I'm a second-year student at UBC pursuing a combined major in Business and Computer Science, currently looking to expand my experience through techincal internships, projects, and hackathons.
               </p>
               <p>
-                My professional career so far has been shaped by my experience in working at TD as a customer experience associate. Outside of work, I build full-stack applications for anything. One of my projects include emulating my real life dog as a RAG Chatbot. Currently, one of my project ideas (for the near or distant future) involves combining hardware and software to make an <b>automatic sheet music scroller</b>.
+                My professional career so far has been shaped by my experience in working at TD as a customer experience associate. Outside of work, I build full-stack applications for anything. One of my projects include emulating my real life dog as a RAG Chatbot. I've even built my personal job scraper since the market is too cooked <span className="text-red-800 dark:text-red-400 font-medium">(if you're currently reading this and know someone hiring for an intern, hit me up on LinkedIn please 🙏)</span> Currently, one of my project ideas involves combining hardware and software to make an <b>automatic sheet music scroller</b>.
               </p>
               <p>
                 I'm drawn to work that sits at the crossroads of people and systems, including product design, strategy, and operations. My learning is centered around understanding how things work and making them work better.
               </p>
               <p>
-                Outside of class and work, I'm a (now retired) :( national Ultimate Frisbee player - which has redefined how I approach teamwork, pressure, and preparation. In my free time, I enjoy playing <s>Rocket League</s> <b>Teamfight Tactics and speedrunning Minecraft</b> competitively, cooking steak whenever I'm in the mood, playing a wide variety of sports, and attending occasional poker home games.
+                Outside of class and work, I'm a (now retired) :( national Ultimate Frisbee player - which has redefined how I approach teamwork, pressure, and preparation. In my free time, I enjoy playing Rocket League, Teamfight Tactics and <b>speedrunning Minecraft</b> competitively, cooking steak whenever I'm in the mood, playing a wide variety of sports, and attending occasional poker home games.
               </p>
             </div>
           </div>
@@ -81,5 +81,5 @@ export default function About() {
         </div>
       </div>
     </section>
-  )
+    )
 }

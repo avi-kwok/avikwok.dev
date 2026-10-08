@@ -1,9 +1,15 @@
 import { Music } from 'lucide-react'
 
+// Newest first. `date` is when the photo went up on the site (mm/dd/yyyy).
+// The grid is dense-packed, so a half-width photo may backfill a gap left by a
+// full-width one above it — Beer in Japan rides up next to the dog for that reason.
 const photos = [
-  { src: '/steak.jpg',      caption: 'Steak' },
-  { src: '/drivingdog.jpg', caption: 'The next Shigeru Shimada' },
-  { src: '/GC2.png',        caption: 'Hit 0.3% of all Rocket League players!', wide: true },
+  { src: '/minecraftpr.png', caption: 'New speedrun PB of 16:49.864 - shoutout Jon Ko for being the GOAT mentor',              date: '10/04/2026', wide: true },
+  { src: '/joji.jpg',        caption: 'Joji in Seattle ‼️',                                date: '07/19/2026' },
+  { src: '/steak.jpg',       caption: 'Steak',                                    date: '06/15/2026' },
+  { src: '/drivingdog.jpg',  caption: 'The next Shigeru Shimada',                 date: '06/15/2026' },
+  { src: '/GC2.png',         caption: 'Hit 0.3% of all Rocket League players!',   date: '06/15/2026', wide: true },
+  { src: '/japanbeer.jpg',   caption: 'Beer in Japan ✅',                          date: '04/30/2026' },
 ]
 
 export default function Special({ themes, selectedTheme, setSelectedTheme }) {
@@ -31,7 +37,7 @@ export default function Special({ themes, selectedTheme, setSelectedTheme }) {
         </div>
 
         {/* Photo gallery — thin gradient border (matches the project widgets), rounded */}
-        <div className="grid grid-cols-2 gap-4 mb-12">
+        <div className="grid grid-cols-2 grid-flow-row-dense gap-4 mb-12">
           {photos.map(ph => (
             <figure key={ph.src} className={ph.wide ? 'col-span-2' : ''}>
               <div className="rounded-2xl bg-gradient-to-br from-green-500 to-blue-500 p-[1.5px] shadow-sm">
@@ -39,7 +45,7 @@ export default function Special({ themes, selectedTheme, setSelectedTheme }) {
                   <img src={ph.src} alt={ph.caption} className="w-full h-auto block" draggable={false} />
                 </div>
               </div>
-              <figcaption className="mt-2 text-center text-sm text-slate-500">{ph.caption}</figcaption>
+              <figcaption className="mt-2 text-center text-sm text-slate-500">{ph.caption} - {ph.date}</figcaption>
             </figure>
           ))}
         </div>
