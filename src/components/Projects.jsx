@@ -2,6 +2,23 @@ import { ExternalLink, Github } from 'lucide-react'
 
 const projects = [
   {
+    title: 'jobhunt',
+    headline: "My personal job finder that posts tech internships the moment they're posted.",
+    subtitle: 'Python CLI Scanner for over 300 companies',
+    preview: '/jobhunt-preview.png',
+    previewBg: 'from-slate-500 to-slate-700',
+    previewColor: '#010301',
+    previewLabel: 'jobhunt',
+    description:
+      'A Python CLI that polls 144 first-party ATS endpoints every 30 minutes and pushes new SWE internship postings to Discord minutes after they go live. Built as a cost-first funnel: free title, location and freshness filters eliminate 99.8% of postings before any paid call, so only the survivors reach Claude for scoring. 66,000 postings ingested over 68 days of unattended scanning cost $0.22 in API spend.',
+    tags: ['Python', 'Typer', 'httpx', 'Pydantic', 'SQLite', 'Claude API', 'Discord Webhooks', 'ATS REST APIs', 'pytest', 'Oracle Cloud', 'cron'],
+    live: 'https://avi-kwok.github.io/jobhunt/',
+    liveLabel: 'Live GitHub Pages Demo',
+    github: 'https://github.com/avi-kwok/jobhunt',
+    bg: 'bg-emerald-50 dark:bg-emerald-950/40',
+    dot: 'bg-green-500',
+  },
+    {
     title: 'Mushu Kwok AI',
     headline: "The most fun I've ever had working on a project",
     subtitle: 'RAG-Powered Conversational Chatbot',
@@ -12,13 +29,11 @@ const projects = [
     description:
       'A full-stack chatbot that uses Retrieval-Augmented Generation (RAG) to bring Mushu, my real life Schnoodle dog, to life through AI. Built an end-to-end pipeline from document ingestion and vector storage to a deployed streaming chat interface.',
     cta: 'Check out the live demo to talk to my real life AI dog!',
-    impact:
-      'End-to-end RAG pipeline with ONNX embeddings, sub-second retrieval, and real-time token streaming via SSE, deployed on Vercel and Railway.',
     tags: ['Python', 'FastAPI', 'LangChain', 'ChromaDB', 'ONNX', 'Groq', 'Next.js', 'React', 'Vercel', 'Railway'],
     live: 'https://mushukwokai.vercel.app',
     liveLabel: 'Try it out',
     github: 'https://github.com/avi-kwok/mushu-AI',
-    gradient: 'from-green-500/10 to-blue-500/10 dark:from-green-800/40 dark:to-blue-900/30',
+    bg: 'bg-sky-50 dark:bg-sky-950/40',
     dot: 'bg-green-500',
   },
   {
@@ -29,13 +44,11 @@ const projects = [
     previewLabel: 'Ulti Coaching App',
     description:
       'My first ever project! A web platform built to help Ultimate Frisbee coaches manage rosters, plan lineups, and coordinate team operations - solving a real coordination problem faced by club teams. Designed and built independently from concept to deployment.',
-    impact:
-      'Deployed on Render with persistent MongoDB storage; supports full CRUD for rosters, game plans, and player statistics.',
     tags: ['JavaScript', 'Node.js', 'Express', 'EJS', 'MongoDB', 'REST API'],
     live: 'https://ultideploy.onrender.com',
     liveLabel: 'Open App',
     github: 'https://github.com/avi-kwok',
-    gradient: 'from-green-500/10 to-purple-500/10 dark:from-green-800/40 dark:to-purple-900/30',
+    bg: 'bg-pink-50 dark:bg-pink-950/40',
     dot: 'bg-teal-500',
   },
 ]
@@ -49,9 +62,14 @@ export default function Projects() {
 
         <div className="grid md:grid-cols-2 gap-8">
           {projects.map((p, i) => (
+            <div key={i} className="relative">
+              {/* Decorative outline, same footprint as the card, offset to the bottom left */}
+              <div
+                aria-hidden="true"
+                className="absolute inset-0 -translate-x-3 translate-y-3 rounded-2xl border-2 border-black dark:border-white/40 pointer-events-none"
+              />
             <div
-              key={i}
-              className={`rounded-2xl bg-gradient-to-br ${p.gradient} border border-slate-200 dark:border-slate-700 flex flex-col hover:border-emerald-300 dark:hover:border-emerald-700 transition-colors overflow-hidden`}
+              className={`relative h-full ${p.bg} rounded-2xl border border-emerald-500 dark:border-emerald-500/60 flex flex-col hover:border-emerald-600 dark:hover:border-emerald-400 transition-colors overflow-hidden`}
             >
               {/* Preview image */}
               <div className="w-full h-48 overflow-hidden bg-slate-900" style={p.previewColor ? { backgroundColor: p.previewColor } : {}}>
@@ -116,6 +134,7 @@ export default function Projects() {
                 </div>
               </div>
               </div>
+            </div>
             </div>
           ))}
         </div>

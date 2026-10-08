@@ -5,7 +5,7 @@ const groups = [
   },
   {
     label: 'Frameworks & Tools',
-    skills: ['React', 'Next.js', 'Node.js', 'FastAPI', 'MongoDB', 'Git', 'Docker'],
+    skills: ['React', 'Next.js', 'Node.js', 'FastAPI', 'SQLite', 'MongoDB', 'Claude API', 'Git', 'Docker', 'Linux'],
   },
   {
     label: 'Business & Professional',
