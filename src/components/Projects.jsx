@@ -87,10 +87,6 @@ export default function Projects() {
                 <h3 className="text-xl font-bold text-slate-900 dark:text-white mb-1">{p.title}</h3>
                 <p className="text-sm text-slate-500 dark:text-slate-400 mb-4">{p.subtitle}</p>
                 <div className="p-3 rounded-lg bg-white/60 dark:bg-slate-800/60 border border-slate-200/60 dark:border-slate-700/60 mb-4">
-                  <p className="text-xs text-slate-500 dark:text-slate-400">
-                    <span className="font-semibold text-slate-700 dark:text-slate-300">Impact: </span>
-                    {p.impact}
-                  </p>
                 </div>
                 <p className="text-sm text-slate-600 dark:text-slate-400 leading-relaxed">
                   {p.headline && <><em>{p.headline}</em>. </>}{p.description}
