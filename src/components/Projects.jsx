@@ -1,4 +1,5 @@
-import { ExternalLink, Github } from 'lucide-react'
+import { useState } from 'react'
+import { ArrowUpRight } from 'lucide-react'
 
 const projects = [
   {
@@ -12,6 +13,7 @@ const projects = [
     description:
       'A Python CLI that polls 144 first-party ATS endpoints every 30 minutes and pushes new SWE internship postings to Discord minutes after they go live. Built as a cost-first funnel: free title, location and freshness filters eliminate 99.8% of postings before any paid call, so only the survivors reach Claude for scoring. 66,000 postings ingested over 68 days of unattended scanning cost $0.22 in API spend.',
     tags: ['Python', 'Typer', 'httpx', 'Pydantic', 'SQLite', 'Claude API', 'Discord Webhooks', 'ATS REST APIs', 'pytest', 'Oracle Cloud', 'cron'],
+    core: ['Python', 'Claude API', 'SQLite', 'Oracle Cloud'],
     live: 'https://avi-kwok.github.io/jobhunt/',
     liveLabel: 'Live GitHub Pages Demo',
     github: 'https://github.com/avi-kwok/jobhunt',
@@ -30,6 +32,7 @@ const projects = [
       'A full-stack chatbot that uses Retrieval-Augmented Generation (RAG) to bring Mushu, my real life Schnoodle dog, to life through AI. Built an end-to-end pipeline from document ingestion and vector storage to a deployed streaming chat interface.',
     cta: 'Check out the live demo to talk to my real life AI dog!',
     tags: ['Python', 'FastAPI', 'LangChain', 'ChromaDB', 'ONNX', 'Groq', 'Next.js', 'React', 'Vercel', 'Railway'],
+    core: ['Python', 'FastAPI', 'LangChain', 'ChromaDB'],
     live: 'https://mushukwokai.vercel.app',
     liveLabel: 'Try it out',
     github: 'https://github.com/avi-kwok/mushu-AI',
@@ -45,6 +48,7 @@ const projects = [
     description:
       'My first ever project! A web platform built to help Ultimate Frisbee coaches manage rosters, plan lineups, and coordinate team operations - solving a real coordination problem faced by club teams. Designed and built independently from concept to deployment.',
     tags: ['JavaScript', 'Node.js', 'Express', 'EJS', 'MongoDB', 'REST API'],
+    core: ['Node.js', 'Express', 'MongoDB'],
     live: 'https://ultideploy.onrender.com',
     liveLabel: 'Open App',
     github: 'https://github.com/avi-kwok',
@@ -53,85 +57,92 @@ const projects = [
   },
 ]
 
+const MAX_TAGS = 6
+
+// Shows the first few tools; "+N more" reveals the rest.
+// Core techs (blue + bold) are listed first so they're never hidden behind "+N more".
+function Tags({ tags: all, core = [] }) {
+  const [open, setOpen] = useState(false)
+  const tags = [...core, ...all.filter(t => !core.includes(t))]
+  const shown = open ? tags : tags.slice(0, MAX_TAGS)
+  const hidden = tags.length - MAX_TAGS
+  return (
+    <ul className="mt-4 flex flex-wrap gap-1.5 text-[12.5px]">
+      {shown.map(t => (
+        <li
+          key={t}
+          className={`px-2 py-0.5 rounded-[4px] border border-b-2 ${core.includes(t)
+            ? 'accent-tint accent-tint-border accent-text font-bold'
+            : 'bg-white border-slate-200 text-slate-600 font-medium'}`}
+        >
+          {t}
+        </li>
+      ))}
+      {hidden > 0 && (
+        <li>
+          <button
+            onClick={() => setOpen(o => !o)}
+            aria-expanded={open}
+            className="px-1 py-0.5 accent-text font-semibold hover:opacity-75 cursor-pointer"
+          >
+            {open ? 'show less' : `+${hidden} more`}
+          </button>
+        </li>
+      )}
+    </ul>
+  )
+}
+
 export default function Projects() {
   return (
-    <section id="projects" className="py-20 px-6">
-      <div className="max-w-6xl mx-auto">
-        <p className="text-emerald-500 dark:text-emerald-400 text-sm font-medium mb-3 tracking-wide uppercase">Work I've built</p>
-        <h2 className="text-3xl sm:text-4xl font-bold text-slate-900 dark:text-white mb-10">Projects</h2>
-
-        <div className="grid md:grid-cols-2 gap-8">
-          {projects.map((p, i) => (
-            <div key={i} className="relative">
-              {/* Decorative outline, same footprint as the card, offset to the bottom left */}
-              <div
-                aria-hidden="true"
-                className="absolute inset-0 -translate-x-3 translate-y-3 rounded-2xl border-2 border-black dark:border-white/40 pointer-events-none"
-              />
-            <div
-              className={`relative h-full ${p.bg} rounded-2xl border border-emerald-500 dark:border-emerald-500/60 flex flex-col hover:border-emerald-600 dark:hover:border-emerald-400 transition-colors overflow-hidden`}
+    <section id="projects" className="px-6 pt-4 pb-12">
+      <div className="max-w-4xl mx-auto divide-y divide-green-100">
+        {projects.map(p => (
+          <article key={p.title} className="py-10 grid sm:grid-cols-[240px_1fr] gap-6 sm:gap-8">
+            <a
+              href={p.live ?? p.github}
+              target="_blank"
+              rel="noreferrer"
+              className="block aspect-[16/10] rounded-lg overflow-hidden ring-1 accent-tint-border ring-[color-mix(in_srgb,var(--accent)_30%,white)] bg-slate-900"
+              style={p.previewColor ? { backgroundColor: p.previewColor } : {}}
             >
-              {/* Preview image */}
-              <div className="w-full h-48 overflow-hidden bg-slate-900" style={p.previewColor ? { backgroundColor: p.previewColor } : {}}>
-                {p.preview
-                  ? <img src={p.preview} alt={p.title} className="w-full h-full object-contain" />
-                  : <div className={`w-full h-full bg-gradient-to-br ${p.previewBg} flex items-center justify-center`}>
-                      <span className="text-slate-400 text-sm font-mono">{p.previewLabel}</span>
-                    </div>
-                }
-              </div>
+              <img
+                src={p.preview}
+                alt={p.title}
+                loading="lazy"
+                decoding="async"
+                className="w-full h-full object-contain hover:scale-[1.03] transition-transform duration-300"
+              />
+            </a>
 
-              <div className="p-8 flex flex-col flex-1">
-              <div className="mb-6 flex-1">
-                <div className={`w-2 h-2 rounded-full ${p.dot} mb-4`} />
-                <h3 className="text-xl font-bold text-slate-900 dark:text-white mb-1">{p.title}</h3>
-                <p className="text-sm text-slate-500 dark:text-slate-400 mb-4">{p.subtitle}</p>
-                <p className="text-sm text-slate-600 dark:text-slate-400 leading-relaxed">
-                  {p.headline && <><em>{p.headline}</em>. </>}{p.description}
-                  {p.cta && <> <strong className="font-semibold text-slate-700 dark:text-slate-300">{p.cta}</strong></>}
-                </p>
-              </div>
+            <div>
+              <h3 className="font-display text-2xl font-bold text-slate-900 flex items-center gap-2.5"><span className="w-2.5 h-2.5 rounded-full accent-bg" />{p.title}</h3>
+              <p className="mt-0.5 text-sm text-slate-500">{p.subtitle}</p>
 
-              <div>
-                <div className="flex flex-wrap gap-2 mb-5">
-                  {p.tags.map(t => (
-                    <span
-                      key={t}
-                      className="px-2.5 py-1 rounded-md bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400 text-xs font-mono"
-                    >
-                      {t}
-                    </span>
-                  ))}
-                </div>
+              <p className="mt-4 text-[15px] leading-relaxed text-slate-700">
+                {p.headline && <><em>{p.headline}</em>. </>}{p.description}
+                {p.cta && <> <span className="font-medium text-slate-900">{p.cta}</span></>}
+              </p>
 
-                <div className="flex gap-3">
-                  {p.live && (
-                    <a
-                      href={p.live}
-                      target="_blank"
-                      rel="noreferrer"
-                      className="inline-flex items-center gap-1.5 px-4 py-2 bg-teal-600 hover:bg-teal-700 text-white text-xs font-medium rounded-lg transition-colors"
-                    >
-                      <ExternalLink size={13} /> {p.liveLabel ?? 'Live Demo'}
-                    </a>
-                  )}
-                  {p.github && (
-                    <a
-                      href={p.github}
-                      target="_blank"
-                      rel="noreferrer"
-                      className="inline-flex items-center gap-1.5 px-4 py-2 bg-slate-100 dark:bg-slate-700 hover:bg-slate-200 dark:hover:bg-slate-600 text-slate-700 dark:text-white text-xs font-medium rounded-lg transition-colors"
-                    >
-                      <Github size={13} /> GitHub
-                    </a>
-                  )}
-                </div>
-              </div>
+              <Tags tags={p.tags} core={p.core} />
+
+              <div className="mt-4 flex gap-6 text-sm font-medium">
+                {p.live && (
+                  <a href={p.live} target="_blank" rel="noreferrer"
+                     className="inline-flex items-center gap-0.5 py-1.5 text-slate-900 underline decoration-green-500 decoration-2 underline-offset-4 hover:text-green-700">
+                    {p.liveLabel ?? 'Live demo'} <ArrowUpRight size={14} />
+                  </a>
+                )}
+                {p.github && (
+                  <a href={p.github} target="_blank" rel="noreferrer"
+                     className="inline-flex items-center gap-0.5 py-1.5 text-slate-700 underline decoration-green-500 decoration-2 underline-offset-4 hover:text-green-700">
+                    GitHub <ArrowUpRight size={14} />
+                  </a>
+                )}
               </div>
             </div>
-            </div>
-          ))}
-        </div>
+          </article>
+        ))}
       </div>
     </section>
   )

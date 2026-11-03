@@ -39,7 +39,7 @@ export default function YoshiSelect({ yoshis, onSelect, onBack }) {
         className="flex flex-col items-center gap-4 sm:gap-5 mb-8 sm:mb-10 opacity-0 self-end"
         style={{ animation: 'yoshiFadeIn 0.3s ease forwards' }}
       >
-        <h1 className="text-3xl sm:text-4xl font-bold text-slate-900 text-center leading-snug">
+        <h1 className="font-display text-3xl sm:text-4xl font-bold text-slate-900 text-center leading-snug">
           Hey, I'm{' '}
           <span className="text-emerald-500">Avidan</span>{' '}
           Kwok

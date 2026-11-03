@@ -2,14 +2,31 @@
 
 @custom-variant dark (&:where(.dark, .dark *));
 
+@theme {
+  --font-sans: 'Inter', system-ui, sans-serif;
+  --font-display: 'Inter', system-ui, sans-serif;
+}
+
+:root {
+  --green: #16a34a;     /* site-wide colour: links, buttons, "now playing" */
+  --accent: var(--green); /* per-page colour from that page's Yoshi (set in SectionPage) */
+}
+
 html {
   scroll-behavior: smooth;
-  font-family: 'Inter', system-ui, sans-serif;
+  font-family: var(--font-sans);
 }
+
+@utility accent-text { color: var(--accent); }
+@utility accent-bg { background-color: var(--accent); }
+@utility accent-border { border-color: var(--accent); }
+@utility accent-tint { background-color: color-mix(in srgb, var(--accent) 9%, white); }
+@utility accent-tint-border { border-color: color-mix(in srgb, var(--accent) 30%, white); }
 
 body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background: #fff;
 }
 
 @keyframes yoshiExpand {
