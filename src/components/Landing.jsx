@@ -19,7 +19,7 @@ export default function Landing({ onDone }) {
           style={expanding ? { animation: 'yoshiExpand 0.65s ease-in forwards', transformOrigin: 'center' } : {}}
         >
           <img
-            src="/fatyoshi.jpeg"
+            src="/fatyoshi-crunchy.jpeg"
             alt="Fat Yoshi"
             className="w-56 h-56 sm:w-64 sm:h-64 object-contain"
             draggable={false}
