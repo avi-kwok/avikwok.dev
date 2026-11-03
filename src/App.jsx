@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import Landing from './components/Landing'
 import YoshiSelect from './components/YoshiSelect'
 import SectionPage from './components/SectionPage'
@@ -7,6 +7,7 @@ import Projects from './components/Projects'
 import Skills from './components/Skills'
 import Experience from './components/Experience'
 import Special from './components/Special'
+import { preloadGallery } from './gallery'
 import MusicWidget from './components/MusicWidget'
 
 const yoshis = [
@@ -32,6 +33,11 @@ export default function App() {
   const [selectedTheme, setSelectedTheme] = useState(
     () => THEMES[Math.floor(Math.random() * THEMES.length)]
   )
+
+  // Warm the ??? photos once the visitor reaches the Yoshi select screen.
+  useEffect(() => {
+    if (view === 'select') preloadGallery()
+  }, [view])
 
   function goTo(target) {
     setFading(true)
