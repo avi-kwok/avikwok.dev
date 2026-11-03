@@ -10,11 +10,12 @@ import Special from './components/Special'
 import MusicWidget from './components/MusicWidget'
 
 const yoshis = [
-  { id: 'about',      img: '/greenyoshi.png',   label: 'About'      },
-  { id: 'projects',   img: '/blueyoshi.png',    label: 'Projects'   },
-  { id: 'skills',     img: '/orangeyoshi.png',  label: 'Skills'     },
-  { id: 'experience', img: '/blackyoshi.webp',  label: 'Experience' },
-  { id: 'special',    img: '/specialyoshi.png', label: '???'        },
+  // accent = the page's single highlight colour, taken from its Yoshi
+  { id: 'about',      img: '/greenyoshi.png',   label: 'About',      accent: '#16a34a' },
+  { id: 'projects',   img: '/blueyoshi.png',    label: 'Projects',   accent: '#2563eb' },
+  { id: 'skills',     img: '/orangeyoshi.png',  label: 'Skills',     accent: '#ea580c' },
+  { id: 'experience', img: '/redyoshi.png',     label: 'Experience', accent: '#dc2626' },
+  { id: 'special',    img: '/specialyoshi.png', label: '???',        accent: '#16a34a' },
 ]
 
 const THEMES = [
