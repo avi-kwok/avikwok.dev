@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react'
+import { Analytics } from '@vercel/analytics/react'
 import Landing from './components/Landing'
 import YoshiSelect from './components/YoshiSelect'
 import SectionPage from './components/SectionPage'
@@ -86,6 +87,7 @@ export default function App() {
       )}
 
       <MusicWidget themes={THEMES} theme={selectedTheme} setTheme={setSelectedTheme} />
+      <Analytics />
     </div>
   )
 }
