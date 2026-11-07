@@ -1,5 +1,6 @@
 import { useState, useRef, useEffect } from 'react'
 import { Volume2 } from 'lucide-react'
+import { Sparkles } from './Shiny'
 
 export default function YoshiSelect({ yoshis, onSelect, onBack }) {
   const [playing, setPlaying] = useState(false)
@@ -39,9 +40,9 @@ export default function YoshiSelect({ yoshis, onSelect, onBack }) {
         className="flex flex-col items-center gap-4 sm:gap-5 mb-8 sm:mb-10 opacity-0 self-end"
         style={{ animation: 'yoshiFadeIn 0.3s ease forwards' }}
       >
-        <h1 className="font-display text-3xl sm:text-4xl font-bold text-slate-900 text-center leading-snug">
+        <h1 className="font-display text-3xl sm:text-4xl font-bold text-ink text-center leading-snug">
           Hey, I'm{' '}
-          <span className="text-emerald-500">Avidan</span>{' '}
+          <span className="text-[#16a34a]">Avidan</span>{' '}
           Kwok
         </h1>
 
@@ -66,7 +67,7 @@ export default function YoshiSelect({ yoshis, onSelect, onBack }) {
       </div>
 
       {/* Yoshis */}
-      <div className="w-full grid grid-cols-2 gap-x-10 gap-y-10 place-items-center justify-center sm:flex sm:flex-row sm:items-end sm:justify-center sm:gap-8 md:gap-10">
+      <div className="w-full grid grid-cols-2 gap-x-10 gap-y-10 place-items-center justify-center sm:flex sm:flex-row sm:items-end sm:justify-center sm:gap-4 md:gap-4 lg:gap-8">
         {yoshis.map((y, i) => (
           <div
             key={y.id}
@@ -74,15 +75,35 @@ export default function YoshiSelect({ yoshis, onSelect, onBack }) {
             style={{ animation: 'yoshiFadeIn 0.3s ease forwards', animationDelay: `${(i * 0.14).toFixed(2)}s` }}
             onClick={() => onSelect(y.id)}
           >
-            <span className="text-sm font-semibold text-slate-700 group-hover:text-slate-900 transition-colors">
+            <span className={`text-sm font-semibold text-body group-hover:text-ink transition-colors${y.shiny ? ' text-shimmer' : ''}`}>
               {y.label}
             </span>
-            <img
-              src={y.img}
-              alt={y.label}
-              className="w-24 h-24 sm:w-28 sm:h-28 md:w-32 md:h-32 object-contain group-hover:brightness-75 transition-all duration-200"
-              draggable={false}
-            />
+            <div className="relative shrink-0 w-24 h-24 md:w-32 md:h-32 lg:w-40 lg:h-40">
+              <img
+                src={y.img}
+                alt={y.label}
+                className="w-full h-full object-contain group-hover:brightness-75 transition-all duration-200"
+                draggable={false}
+              />
+              {y.shiny && (
+                <>
+                  <div
+                    className="shine-sweep"
+                    style={{
+                      WebkitMaskImage: `url(${y.img})`, maskImage: `url(${y.img})`,
+                      WebkitMaskSize: 'contain', maskSize: 'contain',
+                      WebkitMaskRepeat: 'no-repeat', maskRepeat: 'no-repeat',
+                      WebkitMaskPosition: 'center', maskPosition: 'center',
+                    }}
+                  />
+                  <Sparkles spots={[
+                    { top: '4%', right: '6%', size: 16, delay: '0s' },
+                    { top: '50%', left: '2%', size: 12, delay: '.8s' },
+                    { bottom: '8%', right: '4%', size: 10, delay: '1.6s' },
+                  ]} />
+                </>
+              )}
+            </div>
           </div>
         ))}
       </div>

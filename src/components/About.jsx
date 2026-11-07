@@ -24,9 +24,9 @@ export default function About() {
     >
       <div className="max-w-4xl mx-auto grid md:grid-cols-[1fr_220px] gap-8 md:gap-12">
         <div>
-          <div className="flex flex-col gap-[calc(var(--body-size)*var(--para-ratio))] text-[length:var(--body-size)] leading-[var(--body-leading)] text-slate-700">
+          <div className="flex flex-col gap-[calc(var(--body-size)*var(--para-ratio))] text-[length:var(--body-size)] leading-[var(--body-leading)] text-body">
             <p>
-              I'm a second-year student at UBC pursuing a combined major in Business and Computer Science, currently looking to expand my experience through techincal internships, projects, and hackathons.
+              I'm a second-year student at UBC pursuing a combined major in Business and Computer Science, currently looking to expand my experience through technical internships, projects, and hackathons.
             </p>
             <p>
               My professional career so far has been shaped by my experience in working at TD as a customer experience associate. Outside of work, I build full-stack applications for anything. One of my projects include emulating my real life dog as a RAG Chatbot. I've even built my personal job scraper since the market is too cooked <span className="text-green-700 font-medium">(if you're currently reading this and know someone hiring for an intern, hit me up on LinkedIn please 🙏)</span> Currently, I'm building a VLM + computer vision coach that breaks down Minecraft speedruns and gives feedback on where to save time.
@@ -54,23 +54,23 @@ export default function About() {
             <dl className="md:mt-5 text-[13px] sm:text-sm rounded-xl accent-tint px-3 sm:px-4 py-1">
               {FACTS.map(([k, v]) => (
                 <div key={k} className="flex justify-between gap-3 py-1.5 sm:py-2 border-b border-green-200/70 last:border-0">
-                  <dt className="text-slate-500">{k}</dt>
-                  <dd className="font-semibold accent-text text-right">{v}</dd>
+                  <dt className="text-muted">{k}</dt>
+                  <dd className="font-semibold accent-text text-right tabular-nums">{v}</dd>
                 </div>
               ))}
             </dl>
             {/* one row beside the photo on smaller screens, a stacked list in the desktop column */}
-            <ul className="mt-3 md:mt-4 px-1 text-[15px] flex flex-wrap gap-x-5 gap-y-1 md:flex-col md:gap-y-[calc(var(--body-size)*var(--para-ratio))]">
+            <ul className="mt-3 md:mt-[calc(var(--body-size)*var(--para-ratio))] px-1 text-[15px] flex flex-wrap gap-x-5 gap-y-1 md:flex-col md:gap-y-[calc(var(--body-size)*var(--para-ratio))]">
               {LINKS.map(l => (
                 <li key={l.label} className="md:h-[calc(var(--body-size)*var(--body-leading))] md:flex md:items-center">
                   <a
                     href={l.href}
                     target="_blank"
                     rel="noreferrer"
-                    className="group inline-flex items-center gap-0.5 py-0.5 font-medium text-slate-900 underline decoration-green-500 decoration-2 underline-offset-4 hover:text-green-700 transition-colors"
+                    className="link inline-flex items-center gap-0.5 py-0.5 transition-colors"
                   >
                     {l.label}
-                    <ArrowUpRight size={14} className="opacity-50 group-hover:opacity-100 transition-opacity" />
+                    <ArrowUpRight size={14} />
                   </a>
                 </li>
               ))}

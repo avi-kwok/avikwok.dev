@@ -47,7 +47,7 @@ export default function Special({ themes, selectedTheme, setSelectedTheme }) {
         </div>
 
         {/* Theme selector */}
-        <h2 className="font-display text-xl font-bold text-slate-900 mb-2">Background music</h2>
+        <h2 className="font-display text-xl font-bold text-ink mb-2">Background music</h2>
         <ul className="divide-y divide-green-100 border-y border-green-200">
           {themes.map(theme => {
             const active = selectedTheme.id === theme.id
@@ -57,13 +57,13 @@ export default function Special({ themes, selectedTheme, setSelectedTheme }) {
                   onClick={() => handleSelect(theme)}
                   className="w-full flex items-center gap-3 py-3.5 text-left cursor-pointer group"
                 >
-                  <Music size={14} className={active ? 'text-green-600' : 'text-slate-300 group-hover:text-green-500'} />
-                  <span className={`flex-1 text-[15px] ${active ? 'font-semibold text-green-700' : 'text-slate-500 group-hover:text-slate-800'}`}>
+                  <Music size={14} className={active ? 'accent-text' : 'text-slate-300 group-hover:accent-text'} />
+                  <span className={`flex-1 text-[15px] ${active ? 'font-semibold accent-text' : 'text-muted group-hover:text-ink'}`}>
                     {theme.name}
                   </span>
                   {active && (
-                    <span className="flex items-center gap-1.5 text-xs font-medium text-green-600">
-                      <span className="w-1.5 h-1.5 bg-green-500 rounded-full animate-pulse" />
+                    <span className="flex items-center gap-1.5 text-xs font-medium accent-text">
+                      <span className="w-1.5 h-1.5 accent-bg rounded-full" />
                       Now playing
                     </span>
                   )}

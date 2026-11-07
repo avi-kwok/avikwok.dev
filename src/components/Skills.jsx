@@ -50,22 +50,18 @@ function SkillTile({ s, focus }) {
   const lit = focus && s.used.includes(focus)
   return (
     <li
-      className={`flex flex-col justify-between rounded-md border border-b-[3px] transition-all duration-200
-        min-w-[104px] px-3 pt-2 pb-2 text-[15px] ${s.core ? 'font-bold' : 'font-medium'}
+      className={`flex flex-col justify-between rounded-md border transition-all duration-200
+        min-w-[104px] px-3 pt-2 pb-2 text-[15px] ${s.core ? 'font-bold accent-tint accent-tint-border' : 'font-medium bg-white border-line'}
         ${dim ? 'opacity-25' : 'opacity-100'}`}
-      style={{
-        borderColor: lit ? shade(focus) : s.core ? '#fdba74' : '#e2e8f0',
-        backgroundColor: s.core ? '#fff7ed' : '#fff',
-      }}
+      style={lit ? { borderColor: shade(focus) } : undefined}
     >
-      <span className={`leading-tight ${s.core ? 'text-orange-700' : 'text-slate-900'}`}>{s.name}</span>
+      <span className={`leading-tight ${s.core ? 'accent-text' : 'text-ink'}`}>{s.name}</span>
       <span className="mt-2 flex items-center justify-between gap-3 h-3">
         <span className="flex gap-1">
           {s.used.map(id => (
             <span key={id} className="w-2 h-2 rounded-[2px]" style={{ backgroundColor: shade(id) }} />
           ))}
         </span>
-        {s.core && <span className="text-[10px] font-semibold uppercase tracking-wide text-orange-600">core</span>}
       </span>
     </li>
   )
@@ -80,7 +76,7 @@ export default function Skills() {
     <section id="skills" className="px-6 pt-4 pb-16">
       <div className="max-w-4xl mx-auto">
         {/* Project legend: hover (or tap) a project to light up the skills it used */}
-        <div className="flex flex-wrap items-center gap-x-5 gap-y-2 py-4 text-sm text-slate-500">
+        <div className="flex flex-wrap items-center gap-x-5 gap-y-2 py-4 text-sm text-muted">
           <span>Used in:</span>
           {PROJECTS.map(p => (
             <button
@@ -89,7 +85,7 @@ export default function Skills() {
               onMouseLeave={() => setHover(null)}
               onClick={() => setPinned(cur => (cur === p.id ? null : p.id))}
               aria-pressed={pinned === p.id}
-              className={`inline-flex items-center gap-2 cursor-pointer transition-colors ${focus === p.id ? 'text-slate-900 font-medium' : 'hover:text-slate-800'}`}
+              className={`inline-flex items-center gap-2 cursor-pointer transition-[color,transform] active:scale-[0.97] ${focus === p.id ? 'text-ink font-medium' : 'hover:text-ink'}`}
             >
               <span className="w-3 h-3 rounded-[3px]" style={{ backgroundColor: p.color }} />
               {p.name}

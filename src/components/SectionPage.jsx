@@ -16,17 +16,16 @@ export default function SectionPage({ yoshi, onBack, children }) {
 
   return (
     <div className="min-h-screen bg-white" style={{ '--accent': yoshi.accent }}>
-      <header className="sticky top-0 z-10 bg-white/90 backdrop-blur border-b border-slate-200">
+      <header className="sticky top-0 z-10 bg-white/90 backdrop-blur border-b border-line">
         <div className="flex items-center gap-3 px-6 py-3">
           <button
             onClick={onBack}
             title="Back (Esc)"
-            className="flex items-center justify-center w-8 h-8 rounded-full text-slate-400 hover:bg-green-50 hover:text-green-700 transition-colors cursor-pointer"
+            className="flex items-center justify-center w-8 h-8 rounded-full text-subtle hover:bg-green-50 hover:text-green-700 transition-colors cursor-pointer"
           >
             <ArrowLeft size={18} />
           </button>
-          <img src={yoshi.img} alt="" className="w-8 h-8 object-contain" />
-          <span className="font-display font-semibold text-slate-900 text-base">{yoshi.label}</span>
+          <span className="font-display font-semibold text-ink text-base">{yoshi.title ?? yoshi.label}</span>
         </div>
       </header>
 

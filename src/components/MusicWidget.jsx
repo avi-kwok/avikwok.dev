@@ -1,5 +1,5 @@
 import { useState, useRef, useEffect } from 'react'
-import { Play, Pause, SkipBack, SkipForward, Volume2, Volume1, VolumeX, ChevronRight } from 'lucide-react'
+import { Play, Pause, SkipBack, SkipForward, Volume2, Volume1, VolumeX, ChevronRight, Loader2 } from 'lucide-react'
 
 function fmt(t) {
   if (!isFinite(t) || t < 0) t = 0
@@ -9,22 +9,25 @@ function fmt(t) {
 }
 
 export default function MusicWidget({ themes, theme, setTheme }) {
-  const [volume,      setVolume]      = useState(0.25)
+  const [volume,      setVolume]      = useState(0.5)
   const [playing,     setPlaying]     = useState(false)
   const [showName,    setShowName]    = useState(false)
   const [currentTime, setCurrentTime] = useState(0)
   const [duration,    setDuration]    = useState(0)
   const [showVolume,  setShowVolume]  = useState(false)
   const [minimized,   setMinimized]   = useState(false)
+  const [loading,     setLoading]     = useState(false)
+  const [started,     setStarted]     = useState(false)
   const audioRef   = useRef(null)
   const startedRef = useRef(false)
-  const prevVolRef = useRef(0.25)
+  const prevVolRef = useRef(0.5)
 
   const idx = themes.findIndex(t => t.id === theme.id)
 
   // Switch track when theme changes
   useEffect(() => {
     if (!audioRef.current) return
+    setLoading(true)
     audioRef.current.src = theme.src
     audioRef.current.load()
     if (startedRef.current) {
@@ -63,6 +66,7 @@ export default function MusicWidget({ themes, theme, setTheme }) {
     window.__musicPlay = () => {
       if (!audioRef.current) return
       startedRef.current = true
+      setStarted(true)
       audioRef.current.play()
         .then(() => { setPlaying(true); setShowName(true) })
         .catch(() => {})
@@ -90,6 +94,7 @@ export default function MusicWidget({ themes, theme, setTheme }) {
       setPlaying(false)
     } else {
       startedRef.current = true
+      setStarted(true)
       audioRef.current.play()
         .then(() => { setPlaying(true); setShowName(true) })
         .catch(() => {})
@@ -100,6 +105,7 @@ export default function MusicWidget({ themes, theme, setTheme }) {
   function changeTrack(delta) {
     if (idx < 0 || themes.length === 0) return
     startedRef.current = true
+    setStarted(true)
     setShowName(true)
     setTheme(themes[(idx + delta + themes.length) % themes.length])
   }
@@ -116,10 +122,11 @@ export default function MusicWidget({ themes, theme, setTheme }) {
       prevVolRef.current = volume
       setVolume(0)
     } else {
-      setVolume(prevVolRef.current || 0.25)
+      setVolume(prevVolRef.current || 0.5)
     }
   }
 
+  const busy = loading && started
   const VolIcon = volume === 0 ? VolumeX : volume < 0.5 ? Volume1 : Volume2
 
   return (
@@ -130,37 +137,45 @@ export default function MusicWidget({ themes, theme, setTheme }) {
         onTimeUpdate={e => setCurrentTime(e.currentTarget.currentTime)}
         onLoadedMetadata={e => setDuration(e.currentTarget.duration)}
         onEnded={() => changeTrack(1)}
+        onLoadStart={() => setLoading(true)}
+        onWaiting={() => setLoading(true)}
+        onCanPlay={() => setLoading(false)}
+        onPlaying={() => setLoading(false)}
       />
 
       {/* Minimized — the whole widget collapsed into the sound icon */}
       <button
         onClick={() => setMinimized(false)}
         title="Expand music player"
-        className={`fixed bottom-6 right-6 z-50 flex items-center justify-center w-11 h-11 rounded-full bg-white/95 backdrop-blur-sm shadow-lg border border-slate-200 text-emerald-600 hover:text-emerald-800 transition-opacity duration-300 cursor-pointer ${showName && minimized ? 'opacity-100' : 'opacity-0 pointer-events-none'}`}
+        className={`fixed bottom-6 right-6 z-50 flex items-center justify-center w-11 h-11 rounded-full bg-white/95 backdrop-blur-sm shadow-lg border border-line accent-text hover:opacity-75 transition-opacity duration-300 cursor-pointer ${showName && minimized ? 'opacity-100' : 'opacity-0 pointer-events-none'}`}
       >
         <VolIcon size={18} />
       </button>
 
       {/* Full widget */}
-      <div className={`fixed bottom-6 right-6 z-50 w-80 max-w-[calc(100vw-3rem)] bg-white/95 backdrop-blur-sm rounded-2xl shadow-lg border border-slate-200 px-4 py-3 transition-opacity duration-300 ${showName && !minimized ? 'opacity-100' : 'opacity-0 pointer-events-none'}`}>
+      <div className={`fixed bottom-6 right-6 z-50 w-80 max-w-[calc(100vw-3rem)] bg-white/95 backdrop-blur-sm rounded-2xl shadow-lg border border-line px-4 py-3 transition-opacity duration-300 ${showName && !minimized ? 'opacity-100' : 'opacity-0 pointer-events-none'}`}>
 
         {/* Collapse button — solid circle straddling the top-left corner */}
         <button
           onClick={() => setMinimized(true)}
           title="Minimize"
-          className="absolute top-0 left-0 -translate-x-1/2 -translate-y-1/2 z-10 flex items-center justify-center w-7 h-7 rounded-full bg-emerald-600 hover:bg-emerald-700 text-white shadow-md transition-colors cursor-pointer"
+          className="absolute top-0 left-0 -translate-x-1/2 -translate-y-1/2 z-10 flex items-center justify-center w-7 h-7 rounded-full bg-[var(--accent-ink)] hover:bg-[color-mix(in_srgb,var(--accent)_55%,black)] text-white shadow-md transition-colors active:scale-[0.97] cursor-pointer"
         >
-          <ChevronRight size={16} className="rotate-45" />
+          <ChevronRight size={18} className="rotate-45" />
         </button>
 
       {/* Song title */}
-      <div className="text-xs font-semibold text-slate-700 leading-tight truncate mb-2">
+      <div
+        key={theme.id}
+        className="text-xs font-semibold text-body leading-tight truncate mb-2"
+        style={{ animation: 'yoshiFadeIn .25s ease' }}
+      >
         {showName ? theme.name : ''}
       </div>
 
       {/* Seek slider + elapsed / total time */}
       <div className="flex items-center gap-2 mb-2">
-        <span className="text-[10px] tabular-nums text-slate-400 w-7 text-right flex-shrink-0">{fmt(currentTime)}</span>
+        <span className="text-[10px] tabular-nums text-subtle w-7 text-right flex-shrink-0">{busy ? '–:––' : fmt(currentTime)}</span>
         <input
           type="range"
           min="0"
@@ -169,9 +184,10 @@ export default function MusicWidget({ themes, theme, setTheme }) {
           value={Math.min(currentTime, duration || 0)}
           onChange={onSeek}
           aria-label="Seek"
-          className="accent-emerald-500 cursor-pointer flex-1 h-1"
+          className="cursor-pointer flex-1 h-1"
+          style={{ accentColor: 'var(--accent)' }}
         />
-        <span className="text-[10px] tabular-nums text-slate-400 w-7 flex-shrink-0">{fmt(duration)}</span>
+        <span className="text-[10px] tabular-nums text-subtle w-7 flex-shrink-0">{busy ? '–:––' : fmt(duration)}</span>
       </div>
 
       {/* Transport controls + volume */}
@@ -180,23 +196,24 @@ export default function MusicWidget({ themes, theme, setTheme }) {
           <button
             onClick={() => changeTrack(-1)}
             title="Previous track"
-            className="text-slate-500 hover:text-emerald-600 transition-colors cursor-pointer p-1"
+            className="text-muted hover:accent-text transition-[color,transform] active:scale-[0.97] cursor-pointer p-1"
           >
-            <SkipBack size={16} />
+            <SkipBack size={18} />
           </button>
           <button
             onClick={togglePlay}
-            title={playing ? 'Pause' : 'Play'}
-            className="text-emerald-600 hover:text-emerald-800 transition-colors cursor-pointer p-1"
+            title={busy ? 'Loading' : playing ? 'Pause' : 'Play'}
+            disabled={busy}
+            className="accent-text hover:opacity-75 transition-[opacity,transform] active:scale-[0.97] cursor-pointer p-1 disabled:cursor-default disabled:hover:opacity-100"
           >
-            {playing ? <Pause size={18} /> : <Play size={18} />}
+            {busy ? <Loader2 size={18} className="animate-spin" /> : playing ? <Pause size={18} /> : <Play size={18} className="translate-x-px" />}
           </button>
           <button
             onClick={() => changeTrack(1)}
             title="Next track"
-            className="text-slate-500 hover:text-emerald-600 transition-colors cursor-pointer p-1"
+            className="text-muted hover:accent-text transition-[color,transform] active:scale-[0.97] cursor-pointer p-1"
           >
-            <SkipForward size={16} />
+            <SkipForward size={18} />
           </button>
         </div>
 
@@ -209,13 +226,13 @@ export default function MusicWidget({ themes, theme, setTheme }) {
           <button
             onClick={toggleMute}
             title={volume === 0 ? 'Unmute' : 'Mute'}
-            className="text-slate-500 hover:text-emerald-600 transition-colors cursor-pointer p-1 flex"
+            className="text-muted hover:accent-text transition-[color,transform] active:scale-[0.97] cursor-pointer p-1 flex"
           >
-            <VolIcon size={16} />
+            <VolIcon size={18} />
           </button>
           {showVolume && (
             <div className="absolute bottom-full right-0 pb-2 flex justify-center">
-              <div className="flex justify-center bg-white rounded-xl shadow-lg border border-slate-200 px-3 py-3">
+              <div className="flex justify-center bg-white rounded-xl shadow-lg border border-line px-3 py-3">
                 <input
                   type="range"
                   min="0"
@@ -224,8 +241,8 @@ export default function MusicWidget({ themes, theme, setTheme }) {
                   value={volume}
                   onChange={e => setVolume(parseFloat(e.target.value))}
                   aria-label="Volume"
-                  className="accent-emerald-500 cursor-pointer"
-                  style={{ writingMode: 'vertical-lr', direction: 'rtl', width: '1.25rem', height: '6rem' }}
+                  className="cursor-pointer"
+                  style={{ accentColor: 'var(--accent)', writingMode: 'vertical-lr', direction: 'rtl', width: '1.25rem', height: '6rem' }}
                 />
               </div>
             </div>

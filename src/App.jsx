@@ -16,7 +16,7 @@ const yoshis = [
   { id: 'about',      img: '/greenyoshi.png',   label: 'About',      accent: '#16a34a' },
   { id: 'projects',   img: '/blueyoshi.png',    label: 'Projects',   accent: '#2563eb' },
   { id: 'skills',     img: '/orangeyoshi.png',  label: 'Skills',     accent: '#ea580c' },
-  { id: 'experience', img: '/redyoshi.png',     label: 'Experience', accent: '#dc2626' },
+  { id: 'experience', img: '/redyoshi.png',     label: 'Experience', title: 'Experience & Awards', shiny: true, accent: '#dc2626' },
   { id: 'special',    img: '/specialyoshi.png', label: '???',        accent: '#16a34a' },
 ]
 
