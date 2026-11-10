@@ -54,14 +54,14 @@ export default function Hero() {
 
         <div className="flex flex-wrap justify-center gap-3 mb-12">
           <a
-            href="/Avidan-Kwok-Resume.pdf"
+            href="https://resume.avikwok.dev"
             target="_blank"
             className="inline-flex items-center gap-2 px-5 py-2.5 bg-green-600 hover:bg-green-700 text-white text-sm font-medium rounded-lg transition-colors"
           >
             <FileText size={16} /> Resume
           </a>
           <a
-            href="https://www.linkedin.com/in/avidankwok/"
+            href="https://linkedin.avikwok.dev"
             target="_blank"
             rel="noreferrer"
             className="inline-flex items-center gap-2 px-5 py-2.5 bg-stone-800 hover:bg-stone-900 dark:bg-stone-200 dark:hover:bg-stone-100 text-white dark:text-stone-900 text-sm font-medium rounded-lg transition-colors"
@@ -69,7 +69,7 @@ export default function Hero() {
             <Linkedin size={16} /> LinkedIn
           </a>
           <a
-            href="https://github.com/avi-kwok"
+            href="https://github.avikwok.dev"
             target="_blank"
             rel="noreferrer"
             className="inline-flex items-center gap-2 px-5 py-2.5 bg-stone-800 hover:bg-stone-900 dark:bg-stone-200 dark:hover:bg-stone-100 text-white dark:text-stone-900 text-sm font-medium rounded-lg transition-colors"

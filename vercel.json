@@ -16,7 +16,7 @@
     {
       "source": "/(.*)",
       "has": [{ "type": "host", "value": "altamyra.avikwok.dev" }],
-      "destination": "https://github.com/avi-kwok/altamyra",
+      "destination": "https://github.com/vvictort/hackcamp-2026",
       "permanent": false
     },
     {

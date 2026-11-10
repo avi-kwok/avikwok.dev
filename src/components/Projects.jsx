@@ -10,10 +10,10 @@ const projects = [
     preview: '/jobhunt-v2-preview.jpg',
     previewColor: '#fafafa',
     description:
-      "Other job scrapers make you keep going back to their site to refresh, and email alerts just clutter your inbox with one vague daily digest. So I built jobhunt v2 - every 30 minutes, freshly posted SWE internships and co-ops get sent to your Discord as a notification with the position and company name. It's free for anyone: paste a Discord webhook, pick your countries and levels, and you're set. It scans 196 companies across 5 ATS APIs and runs at $0/mo.",
+      "Other job scrapers make you keep going back to their site to refresh, and email alerts just clutter your inbox with one vague daily digest. So I built jobhunt v2 - every 30 minutes, freshly posted SWE internships and co-ops get sent to your Discord as a notification with the position and company name. It's free for anyone: paste a Discord webhook, pick your countries and levels, and you're set. It scans 403 companies across 31 job boards in under 7 minutes and runs at $0/mo.",
     tags: ['Python', 'FastAPI', 'PostgreSQL', 'Oracle Cloud', 'Vercel', 'Supabase', 'SQLite', 'Discord Webhooks', 'ATS REST APIs', 'pytest', 'cron'],
     core: ['Python', 'FastAPI', 'PostgreSQL', 'Oracle Cloud'],
-    live: 'https://jobhunt-v2.vercel.app',
+    live: 'https://jobhunt.avikwok.dev',
     liveLabel: 'Subscribe',
     github: 'https://github.com/avi-kwok/jobhunt-v2',
   },
@@ -33,7 +33,7 @@ const projects = [
     github: 'https://github.com/vvictort/hackcamp-2026',
   },
   {
-    title: 'WordHuntSolver',
+    title: "Avi's Word Hunt Solver",
     headline: 'Beat your friends at Word Hunt every time, with words laid out so you can enter them fast',
     preview: '/wordhunt-preview.jpg',
     previewColor: '#6f9f6f',
@@ -41,7 +41,7 @@ const projects = [
       "Made as a joke for fun (I'm actually decent at Word Hunt, so this is not me coping). Most solvers just dump every word sorted by score, which makes them slow to type in. This one groups words you can enter back to back, like retain, retainer and retainers, so you can \"cheat\" and consistently beat your friends. Solves any board in about 3 ms with a trie and DFS.",
     tags: ['Python', 'Trie', 'DFS', 'wordfreq', 'HTML', 'JavaScript'],
     core: ['Python', 'Trie', 'DFS'],
-    live: 'https://wordhunt-ak.vercel.app/',
+    live: 'https://wordhunt.avikwok.dev',
     liveLabel: 'Try it out',
     github: 'https://github.com/avi-kwok/WordHuntSolver',
   },
@@ -76,7 +76,7 @@ const projects = [
     github: 'https://github.com/avi-kwok/jobhunt',
   },
   {
-    title: 'Mushu Kwok AI',
+    title: 'Mushu AI',
     headline: 'Chat with an AI version of Mushu, my real-life Schnoodle',
     preview: '/mushu-preview.png',
     previewColor: '#010301',
@@ -84,7 +84,7 @@ const projects = [
       'A full-stack chatbot that uses Retrieval-Augmented Generation (RAG) to bring Mushu, my real life Schnoodle dog, to life through AI. Built an end-to-end pipeline from document ingestion and vector storage to a deployed streaming chat interface.',
     tags: ['Python', 'FastAPI', 'LangChain', 'ChromaDB', 'ONNX', 'Groq', 'Next.js', 'React', 'Vercel', 'Railway'],
     core: ['Python', 'FastAPI', 'LangChain', 'ChromaDB'],
-    live: 'https://mushukwokai.vercel.app',
+    live: 'https://mushu.avikwok.dev',
     liveLabel: 'Try it out',
     github: 'https://github.com/avi-kwok/mushu-AI',
   },
@@ -98,7 +98,7 @@ const projects = [
     core: ['Node.js', 'Express', 'MongoDB'],
     live: 'https://ultideploy.onrender.com',
     liveLabel: 'Open App',
-    github: 'https://github.com/avi-kwok',
+    github: 'https://github.avikwok.dev',
   },
 ]
 

@@ -8,9 +8,9 @@ const FACTS = [
 ]
 
 const LINKS = [
-  { label: 'Resume',   href: '/Avidan-Kwok-Resume.pdf' },
-  { label: 'LinkedIn', href: 'https://www.linkedin.com/in/avidankwok/' },
-  { label: 'GitHub',   href: 'https://github.com/avi-kwok' },
+  { label: 'Resume',   href: 'https://resume.avikwok.dev' },
+  { label: 'LinkedIn', href: 'https://linkedin.avikwok.dev' },
+  { label: 'GitHub',   href: 'https://github.avikwok.dev' },
 ]
 
 export default function About() {
