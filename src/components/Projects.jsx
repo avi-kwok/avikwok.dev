@@ -10,8 +10,8 @@ const projects = [
     preview: '/jobhunt-v2-preview.jpg',
     previewColor: '#fafafa',
     description:
-      "Other job scrapers make you keep going back to their site to refresh, and email alerts just clutter your inbox with one vague daily digest. So I built jobhunt v2 - every 30 minutes, freshly posted SWE internships and co-ops get sent to your Discord as a notification with the position and company name. It's free for anyone: paste a Discord webhook, pick your countries and levels, and you're set. It scans 403 companies across 31 job boards in under 7 minutes and runs at $0/mo.",
-    tags: ['Python', 'FastAPI', 'PostgreSQL', 'Oracle Cloud', 'Vercel', 'Supabase', 'SQLite', 'Discord Webhooks', 'ATS REST APIs', 'pytest', 'cron'],
+      "Other job scrapers make you keep going back to their site to refresh, and email alerts just clutter your inbox with one vague daily digest. So I built jobhunt v2 - every 30 minutes, freshly posted SWE internships and co-ops get sent to your Discord as a notification with the position and company name. It's free for anyone: paste a Discord webhook, pick your countries and levels, and you're set. It scans 403 companies across 31 job boards in under 7 minutes on $0 infrastructure.",
+    tags: ['Python', 'FastAPI', 'Claude API', 'PostgreSQL', 'Oracle Cloud', 'Vercel', 'Supabase', 'SQLite', 'Discord Webhooks', 'ATS REST APIs', 'pytest', 'cron'],
     core: ['Python', 'FastAPI', 'PostgreSQL', 'Oracle Cloud'],
     live: 'https://jobhunt.avikwok.dev',
     liveLabel: 'Subscribe',
