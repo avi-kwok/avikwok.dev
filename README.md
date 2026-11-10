@@ -1,16 +1,34 @@
-# React + Vite
+# avikwok.dev
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+My personal website: projects, experience, awards and skills, navigated by picking a Yoshi.
 
-Currently, two official plugins are available:
+Live at [avikwok.dev](https://avikwok.dev).
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Stack
 
-## React Compiler
+React 19, Vite, Tailwind CSS v4, lucide-react. Hosted on Vercel with Vercel Analytics.
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## Run locally
 
-## Expanding the ESLint configuration
+```sh
+npm install
+npm run dev      # http://localhost:5173
+npm run build    # production build in dist/
+npm run lint
+```
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## Editing content
+
+| What | Where |
+| --- | --- |
+| Section order and Yoshi colours | `src/App.jsx` |
+| About text, quick facts, links | `src/components/About.jsx` |
+| Projects | `src/components/Projects.jsx` |
+| Experience and awards | `src/components/Experience.jsx` |
+| Skills | `src/components/Skills.jsx` |
+| ??? photo gallery | `src/gallery.js`, images in `public/gallery/` |
+| Resume | `public/Avidan-Kwok-Resume.pdf` |
+
+## Subdomains
+
+`vercel.json` redirects `github.`, `linkedin.`, `resume.` and `altamyra.avikwok.dev` to their targets. `jobhunt.`, `wordhunt.` and `mushu.avikwok.dev` are separate Vercel projects.
