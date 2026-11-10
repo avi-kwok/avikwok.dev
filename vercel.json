@@ -1,0 +1,29 @@
+{
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "redirects": [
+    {
+      "source": "/(.*)",
+      "has": [{ "type": "host", "value": "github.avikwok.dev" }],
+      "destination": "https://github.com/avi-kwok",
+      "permanent": false
+    },
+    {
+      "source": "/(.*)",
+      "has": [{ "type": "host", "value": "linkedin.avikwok.dev" }],
+      "destination": "https://www.linkedin.com/in/avidankwok",
+      "permanent": false
+    },
+    {
+      "source": "/(.*)",
+      "has": [{ "type": "host", "value": "altamyra.avikwok.dev" }],
+      "destination": "https://github.com/avi-kwok/altamyra",
+      "permanent": false
+    },
+    {
+      "source": "/(.*)",
+      "has": [{ "type": "host", "value": "resume.avikwok.dev" }],
+      "destination": "https://www.avikwok.dev/Avidan-Kwok-Resume.pdf",
+      "permanent": false
+    }
+  ]
+}
