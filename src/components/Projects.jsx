@@ -1,11 +1,70 @@
 import { useState } from 'react'
 import { ArrowUpRight } from 'lucide-react'
 
+// Featured first, then newest first.
 const projects = [
   {
-    title: 'jobhunt',
+    title: 'jobhunt v2',
     featured: true,
+    headline: 'Freshly posted internships every 30 minutes, sent as notifications straight to your phone',
+    preview: '/jobhunt-v2-preview.jpg',
+    previewColor: '#fafafa',
+    description:
+      "Other job scrapers make you keep going back to their site to refresh, and email alerts just clutter your inbox with one vague daily digest. So I built jobhunt v2 - every 30 minutes, freshly posted SWE internships and co-ops get sent to your Discord as a notification with the position and company name. It's free for anyone: paste a Discord webhook, pick your countries and levels, and you're set. It scans 196 companies across 5 ATS APIs and runs at $0/mo.",
+    tags: ['Python', 'FastAPI', 'PostgreSQL', 'Oracle Cloud', 'Vercel', 'Supabase', 'SQLite', 'Discord Webhooks', 'ATS REST APIs', 'pytest', 'cron'],
+    core: ['Python', 'FastAPI', 'PostgreSQL', 'Oracle Cloud'],
+    live: 'https://jobhunt-v2.vercel.app',
+    liveLabel: 'Subscribe',
+    github: 'https://github.com/avi-kwok/jobhunt-v2',
+  },
+  {
+    title: 'Altamyra',
+    headline: 'Trackable, personalized learning for students with IEPs, taking the weight off teachers and EAs',
+    preview: '/altamyra-preview.jpg',
+    previewColor: '#f2f2f2',
+    description: (
+      <>
+        Students with IEPs need every lesson adapted to their goals and their progress tracked daily - work that usually falls on teachers and EAs after hours. Altamyra cuts that down to a short daily loop: our AI agent adapts each lesson plan to every student's IEP goals, EAs log progress in class, and summaries get drafted for staff to just review and approve. I led product and backend, keeping student names out of every AI call.{' '}
+        <strong className="font-semibold text-ink">Won 3rd place for Best Agent on Maritime at nwPlus HackCamp 2026.</strong>
+      </>
+    ),
+    tags: ['TypeScript', 'Cloudflare Workers', 'Durable Objects', 'Gemini API', 'React', 'Hono', 'Vite', 'Tailwind CSS', 'Maritime'],
+    core: ['TypeScript', 'Cloudflare Workers', 'Durable Objects', 'Gemini API'],
+    github: 'https://github.com/vvictort/hackcamp-2026',
+  },
+  {
+    title: 'WordHuntSolver',
+    headline: 'Beat your friends at Word Hunt every time, with words laid out so you can enter them fast',
+    preview: '/wordhunt-preview.jpg',
+    previewColor: '#6f9f6f',
+    description:
+      "Made as a joke for fun (I'm actually decent at Word Hunt, so this is not me coping). Most solvers just dump every word sorted by score, which makes them slow to type in. This one groups words you can enter back to back, like retain, retainer and retainers, so you can \"cheat\" and consistently beat your friends. Solves any board in about 3 ms with a trie and DFS.",
+    tags: ['Python', 'Trie', 'DFS', 'wordfreq', 'HTML', 'JavaScript'],
+    core: ['Python', 'Trie', 'DFS'],
+    live: 'https://wordhunt-ak.vercel.app/',
+    liveLabel: 'Try it out',
+    github: 'https://github.com/avi-kwok/WordHuntSolver',
+  },
+  {
+    title: 'Rhume',
+    headline: (
+      <>
+        Flu-season inventory agent prototype that{' '}
+        <strong className="font-semibold text-ink">won 1st place at UBC BizTech Product+ 2026 (SAP case)</strong>
+      </>
+    ),
+    preview: '/rhume-preview.jpg',
+    previewColor: '#ffffff',
+    description:
+      "Rhume replays the 2023–24 Canadian flu season week by week. It rates each Shoppers Drug Mart region from public-health signals, proposes stock moves ahead of demand surges, writes a decision brief for each move, and turns approved moves into simulated SAP documents. Deterministic code computes every number, and the LLM only writes the explanation. A scoreboard compares the results against today's sales-following restocking, and the whole app runs offline.",
+    tags: ['TypeScript', 'Next.js', 'React', 'Claude API', 'Vitest', 'Playwright'],
+    core: ['TypeScript', 'Next.js', 'React', 'Claude API'],
+    github: 'https://github.com/avi-kwok/Rhume',
+  },
+  {
+    title: 'jobhunt v1',
     headline: 'Posts new SWE internships to Discord minutes after they go live',
+    note: 'Succeeded by jobhunt v2.',
     preview: '/jobhunt-preview.png',
     previewColor: '#010301',
     description:
@@ -123,6 +182,7 @@ export default function Projects() {
               <div>
                 <h3 className="font-display text-2xl font-bold text-ink">{p.title}</h3>
                 <p className="mt-1 text-[15px] text-muted">{p.headline}</p>
+                {p.note && <p className="mt-2 text-sm font-medium accent-text">{p.note}</p>}
               </div>
 
               <p className="mt-4 text-[15px] leading-relaxed text-body">{p.description}</p>

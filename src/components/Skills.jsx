@@ -1,104 +1,32 @@
-import { useState } from 'react'
-
-// Each project gets its own shade of orange; a skill's dots show which projects used it.
-const PROJECTS = [
-  { id: 'jobhunt', name: 'jobhunt',          color: '#c2410c' },
-  { id: 'mushu',   name: 'Mushu Kwok AI',    color: '#f97316' },
-  { id: 'ulti',    name: 'Ulti Coach App',   color: '#fdba74' },
-]
-
-// Mirrors the Technical Skills section of the resume. `core` = the ones I lean on most.
+// Mirrors the Technical Skills section of the resume; highlighted ones render first.
 const groups = [
-  {
-    label: 'Languages',
-    skills: [
-      { name: 'Python',     core: true, used: ['jobhunt', 'mushu'] },
-      { name: 'JavaScript', core: true, used: ['mushu', 'ulti'] },
-      { name: 'Java',       used: [] },
-      { name: 'C++',        used: [] },
-      { name: 'SQL',        used: ['jobhunt'] },
-    ],
-  },
-  {
-    label: 'Frameworks',
-    skills: [
-      { name: 'React',   core: true, used: ['mushu'] },
-      { name: 'FastAPI', core: true, used: ['mushu'] },
-      { name: 'Next.js', used: ['mushu'] },
-      { name: 'Node.js', used: ['ulti'] },
-      { name: 'Express', used: ['ulti'] },
-    ],
-  },
-  {
-    label: 'Cloud & Tools',
-    skills: [
-      { name: 'Claude API',   core: true, used: ['jobhunt'] },
-      { name: 'Git',          used: ['jobhunt', 'mushu', 'ulti'] },
-      { name: 'Linux',        used: ['jobhunt'] },
-      { name: 'Oracle Cloud', used: ['jobhunt'] },
-      { name: 'SQLite',       used: ['jobhunt'] },
-      { name: 'pytest',       used: ['jobhunt'] },
-      { name: 'MongoDB',      used: ['ulti'] },
-    ],
-  },
+  { label: 'Languages',     skills: ['Python', 'TypeScript', 'Java', 'C++', 'SQL'] },
+  { label: 'Frameworks',    skills: ['React', 'Next.js', 'FastAPI', 'Hono', 'LangChain'] },
+  { label: 'Cloud & Tools', skills: ['Git', 'Linux', 'Cloudflare Workers', 'Oracle Cloud', 'pytest', 'Claude API', 'Gemini API'] },
 ]
 
-const shade = id => PROJECTS.find(p => p.id === id).color
-
-function SkillTile({ s, focus }) {
-  const dim = focus && !s.used.includes(focus)
-  const lit = focus && s.used.includes(focus)
-  return (
-    <li
-      className={`flex flex-col justify-between rounded-md border transition-all duration-200
-        min-w-[104px] px-3 pt-2 pb-2 text-[15px] ${s.core ? 'font-bold accent-tint accent-tint-border' : 'font-medium bg-white border-line'}
-        ${dim ? 'opacity-25' : 'opacity-100'}`}
-      style={lit ? { borderColor: shade(focus) } : undefined}
-    >
-      <span className={`leading-tight ${s.core ? 'accent-text' : 'text-ink'}`}>{s.name}</span>
-      <span className="mt-2 flex items-center justify-between gap-3 h-3">
-        <span className="flex gap-1">
-          {s.used.map(id => (
-            <span key={id} className="w-2 h-2 rounded-[2px]" style={{ backgroundColor: shade(id) }} />
-          ))}
-        </span>
-      </span>
-    </li>
-  )
-}
+// The ones I lean on most, highlighted in the page accent.
+const core = ['Python', 'TypeScript', 'React', 'FastAPI', 'Cloudflare Workers', 'Claude API']
 
 export default function Skills() {
-  const [pinned, setPinned] = useState(null)
-  const [hover, setHover] = useState(null)
-  const focus = hover ?? pinned
-
   return (
     <section id="skills" className="px-6 pt-4 pb-16">
       <div className="max-w-4xl mx-auto">
-        {/* Project legend: hover (or tap) a project to light up the skills it used */}
-        <div className="flex flex-wrap items-center gap-x-5 gap-y-2 py-4 text-sm text-muted">
-          <span>Used in:</span>
-          {PROJECTS.map(p => (
-            <button
-              key={p.id}
-              onMouseEnter={() => setHover(p.id)}
-              onMouseLeave={() => setHover(null)}
-              onClick={() => setPinned(cur => (cur === p.id ? null : p.id))}
-              aria-pressed={pinned === p.id}
-              className={`inline-flex items-center gap-2 cursor-pointer transition-[color,transform] active:scale-[0.97] ${focus === p.id ? 'text-ink font-medium' : 'hover:text-ink'}`}
-            >
-              <span className="w-3 h-3 rounded-[3px]" style={{ backgroundColor: p.color }} />
-              {p.name}
-            </button>
-          ))}
-        </div>
-
-        <div className="divide-y divide-green-100 border-t border-green-100">
+        <div className="divide-y divide-green-100 border-t border-green-100 mt-4">
           {groups.map(group => (
             <div key={group.label} className="py-8 grid sm:grid-cols-[160px_1fr] gap-4 sm:gap-8">
               <h3 className="text-lg font-bold accent-text sm:pt-2">{group.label}</h3>
-              <ul className="flex flex-wrap items-end gap-2.5">
-                {group.skills.map(s => <SkillTile key={s.name} s={s} focus={focus} />)}
+              <ul className="flex flex-wrap items-center gap-2.5">
+                {[...group.skills.filter(n => core.includes(n)), ...group.skills.filter(n => !core.includes(n))].map(name => (
+                  <li
+                    key={name}
+                    className={`rounded-md border px-3 py-2 text-[15px] leading-tight ${core.includes(name)
+                      ? 'accent-tint accent-tint-border accent-text font-bold'
+                      : 'border-line bg-white text-ink font-medium'}`}
+                  >
+                    {name}
+                  </li>
+                ))}
               </ul>
             </div>
           ))}

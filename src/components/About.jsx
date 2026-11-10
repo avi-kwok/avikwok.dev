@@ -32,9 +32,6 @@ export default function About() {
               My professional career so far has been shaped by my experience in working at TD as a customer experience associate. Outside of work, I build full-stack applications for anything. One of my projects include emulating my real life dog as a RAG Chatbot. I've even built my personal job scraper since the market is too cooked <span className="text-green-700 font-medium">(if you're currently reading this and know someone hiring for an intern, hit me up on LinkedIn please 🙏)</span> Currently, I'm building a VLM + computer vision coach that breaks down Minecraft speedruns and gives feedback on where to save time.
             </p>
             <p>
-              I'm drawn to work that sits at the crossroads of people and systems, including product design, strategy, and operations. My learning is centered around understanding how things work and making them work better.
-            </p>
-            <p>
               Outside of class and work, I'm a (now retired) :( national Ultimate Frisbee player - which has redefined how I approach teamwork, pressure, and preparation. In my free time, I enjoy playing Rocket League, Teamfight Tactics and speedrunning Minecraft competitively, cooking steak whenever I'm in the mood, playing a wide variety of sports, and attending occasional poker home games.
             </p>
           </div>

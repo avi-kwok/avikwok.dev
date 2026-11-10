@@ -15,8 +15,8 @@ const yoshis = [
   // accent = the page's single highlight colour, taken from its Yoshi
   { id: 'about',      img: '/greenyoshi.png',   label: 'About',      accent: '#16a34a' },
   { id: 'projects',   img: '/blueyoshi.png',    label: 'Projects',   accent: '#2563eb' },
-  { id: 'skills',     img: '/orangeyoshi.png',  label: 'Skills',     accent: '#ea580c' },
   { id: 'experience', img: '/redyoshi.png',     label: 'Experience', title: 'Experience & Awards', shiny: true, accent: '#dc2626' },
+  { id: 'skills',     img: '/orangeyoshi.png',  label: 'Skills',     accent: '#ea580c' },
   { id: 'special',    img: '/specialyoshi.png', label: '???',        accent: '#16a34a' },
 ]
 

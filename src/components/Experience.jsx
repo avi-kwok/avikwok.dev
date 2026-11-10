@@ -51,14 +51,28 @@ const roles = [
   },
 ]
 
-// Newest first.
+// Featured first, then newest first.
 const awards = [
   {
     date: 'Oct 2026',
     title: 'First Place, UBC BizTech Product+ 2026',
     shiny: true,
+    featured: true,
+    photo: '/productplus.jpg',
     note: 'My first ever competition in university!',
     body: 'Won first place out of 29 teams and 150+ competitors. Pitched and prototyped an AI agent that pre-positions pharmacy inventory ahead of flu-season demand surges.',
+  },
+  {
+    date: 'Nov 2026',
+    title: 'Third Place, Best Agent on Maritime (Sponsor Track)',
+    org: 'nwPlus HackCamp 2026 · Vancouver, BC',
+    body: "Placed third out of 76 teams with Altamyra, whose Lesson Lens agent adapts lesson plans to each student's IEP goals.",
+  },
+  {
+    date: 'May 2025',
+    title: 'Junior Tier 1 Ultimate City Champions 2025, Head Coach',
+    org: "Vancouver Secondary School's Athletic Association",
+    body: 'Coached some highschoolers on how to throw a disc',
   },
   {
     date: 'Aug 2024',
@@ -124,10 +138,21 @@ function AwardCard({ a }) {
             {a.note && <p className="text-sm accent-text">{a.note}</p>}
             <p className={`${a.note ? 'mt-1.5 ' : ''}text-[15px] leading-relaxed text-body`}>{a.body}</p>
           </div>
+          {a.photo && (
+            <img
+              src={a.photo}
+              alt={`${a.title} winners`}
+              width={800}
+              height={533}
+              loading="lazy"
+              decoding="async"
+              className="mt-4 w-full rounded-md ring-1 ring-amber-200 object-cover"
+            />
+          )}
         </div>
       </div>
     </div>
-    {a.shiny && <span className="absolute top-0 right-0 z-10 -translate-y-1/2 translate-x-1/2 rounded-full bg-amber-50 border border-amber-300 shadow-sm px-2.5 py-0.5 text-[10px] font-semibold uppercase tracking-wider text-amber-700">New</span>}
+    {a.shiny && <span className="absolute top-0 right-0 z-10 -translate-y-1/2 translate-x-1/2 rounded-full bg-amber-50 border border-amber-300 shadow-sm px-2.5 py-0.5 text-[10px] font-semibold uppercase tracking-wider text-amber-700">{a.featured ? 'Featured' : 'New'}</span>}
     </div>
   )
 }
