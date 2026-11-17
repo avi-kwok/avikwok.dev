@@ -9,7 +9,7 @@ export default function Navbar({ dark, toggleDark }) {
     { href: '#projects', label: 'Projects' },
     { href: '#skills', label: 'Skills' },
     { href: '#experience', label: 'Experience' },
-    { href: '#contact', label: 'Contact' },
+    { href: 'mailto:avidevkwok@gmail.com', label: 'Contact' },
   ]
 
   return (

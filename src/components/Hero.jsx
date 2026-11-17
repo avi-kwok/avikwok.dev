@@ -77,7 +77,7 @@ export default function Hero() {
             <Github size={16} /> GitHub
           </a>
           <a
-            href="#contact"
+            href="mailto:avidevkwok@gmail.com"
             className="inline-flex items-center gap-2 px-5 py-2.5 bg-stone-800 hover:bg-stone-900 dark:bg-stone-200 dark:hover:bg-stone-100 text-white dark:text-stone-900 text-sm font-medium rounded-lg transition-colors"
           >
             <Mail size={16} /> Contact
